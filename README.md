@@ -1,4 +1,4 @@
-#####I'm implementing the "Simple Genetic Algorithm" described in Chapter 1 of Melanie Mitchell's book "Genetic Algorithms".  I'm assuming you have sbt installed on your computer. 
+#####This is a Scala implementation of the "Simple Genetic Algorithm" described in Chapter 1 of Melanie Mitchell's book "Genetic Algorithms".  I'm assuming you have sbt installed on your computer. 
 I'm really new to sbt, so I don't know how to do much. But I can direct you to a Scala shell and describe how to use this code. 
 
 from the home directory of this project, type: 
