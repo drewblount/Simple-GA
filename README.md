@@ -14,10 +14,8 @@ This will bring up the familiar Scala shell in the sbt environment, where it is 
 Once you're in the shell, you can interact with a few classes: 
 
 
-Chromosome(size:Int, bitstring: Array\\[Boolean\](size))
-
+Chromosome(size:Int, bitstring: Array\[Boolean\](size))
 Population(numAgents:Int,agentSize:Int)
-
 GAsim(numAgents:Int, agentSize:int, numRounds:Int, pMutation:Double, pCrossover:Double)
 
 
