@@ -1,4 +1,4 @@
-#####This is a Scala implementation of the "Simple Genetic Algorithm" described in Chapter 1 of Melanie Mitchell's book "Genetic Algorithms".  I'm assuming you have sbt installed on your computer. 
+#####This is a Scala implementation of the "Simple Genetic Algorithm" described in Chapter 1 of Melanie Mitchell's book "Genetic Algorithms".  I'm assuming you have [sbt](http://www.scala-sbt.org/) installed on your computer. 
 I'm really new to sbt, so I don't know how to do much. But I can direct you to a Scala shell and describe how to use this code. 
 
 from the home directory of this project, type: 
@@ -7,7 +7,7 @@ from the home directory of this project, type:
 
 *(you may need to sudo)*.
 
-This will bring up the familiar Scala shell in the sbt environment, where it is managing dependencies. It's set up this way so that we can use the breeze package to sample from probability distributions. 
+This will bring up the familiar Scala shell in the sbt environment, which it is managing dependencies. It's set up this way so that we can use the [breeze](https://github.com/scalanlp/breeze) package to sample from probability distributions. 
 
 Once you're in the shell, you can interact with a few classes: 
 
