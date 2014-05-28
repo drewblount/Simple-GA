@@ -1,0 +1,6 @@
+update
+console
+exit
+update
+scala runSim 100 20 100 0.001 0.7
+exit

@@ -1,0 +1,6 @@
+object runSIm {
+  def main(args: Array[String]) {
+    val numAgents = if (args.length > 0) args(0).toInt else 100;
+    val agentSize = if (args.length > 1) args(1).toInt else 8;
+  }
+}

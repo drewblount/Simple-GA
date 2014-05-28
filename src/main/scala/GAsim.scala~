@@ -1,0 +1,127 @@
+// Jacob Menick
+// May 25, 2014
+//
+// GAsim.scala
+// 
+// This portion of the code builds an object to represent the simulation. 
+
+import breeze.stats.distributions._
+import breeze.linalg._
+
+class GAsim(n:Int, s:Int, r:Int, pm:Double, pc:Double) {
+  // Define the parameters of the simulation.
+  val numAgents:Int = n;
+  val agentSize:Int = s;
+  val numRounds:Int = r;
+  val pMutation:Double = pm;
+  val pCrossover:Double = pc;
+ 
+  var population = new Population(numAgents, agentSize);
+  population.initialize();
+  
+  def sampleParent():Chromosome = {
+    // sample from the population with probability of sampling according 
+    // to the fitness of a chromosome. 
+    // this can be done with a multinomial random variable. 
+
+    // We would like to sample with probability according to fitness
+    // so let's get an array of the fitnesses of each chromosome
+    val fitArray = population.agents map {x => x.fitness};
+    val fitArrayProp = fitArray map {x => x/fitArray.sum};
+    val params = DenseVector(fitArrayProp);
+
+    // the params variable is now passable to the Multinomial distribution
+    // and a chromosome is sampled proportionally to its fitness. 
+
+    val mult = new Multinomial(params);
+    val index = mult.draw;
+    val parent = population.agents(index);
+    return parent
+  }
+
+  def produceChild(parent1:Chromosome, parent2:Chromosome):Array[Chromosome] = {
+    // Write the code to crossover the parents' chromosomes at a randomly chosen index.  
+
+    // first, decide whether or not to crossover. 
+    // This is is done with probability 'pCrossover'.
+    // decide whether or not to crossover by sampling from a Bernoulli distribution
+    // with the specified probability. 
+
+    var bern = new Bernoulli(pCrossover);
+    var decision = bern.draw();
+
+    val placeholder:Array[Boolean] = new Array[Boolean](agentSize);
+    var child1:Chromosome = new Chromosome(agentSize,placeholder);
+    var child2:Chromosome = new Chromosome(agentSize,placeholder);
+
+    if (decision) {
+      // randomly choose an index at which to cross over.  
+      val unif = new Uniform(0,agentSize - 1);
+      val index = unif.draw.round.toInt
+      
+      // If the index chosen is the last in the array, then no crossover occurs. 
+      if (index == (agentSize - 1)) {
+        child1 = parent1;
+	child2 = parent2;
+      }
+      
+      // Otherwise, perform the crossover. 
+      else {
+         // Slice up the dna arrays of the parents
+         val p1s1:Array[Boolean] = parent1.dna.slice(0,index+1);
+	 val p2s1:Array[Boolean] = parent2.dna.slice(index +1,agentSize);
+	 val dna1:Array[Boolean] = Array.concat(p1s1,p2s1);
+
+	 val p1s2:Array[Boolean] = parent1.dna.slice(index +1, agentSize);
+	 val p2s2:Array[Boolean] = parent2.dna.slice(0,index+1);
+	 val dna2:Array[Boolean] = Array.concat(p2s2,p1s2);
+
+	 child1 = new Chromosome(agentSize,dna1);
+	 child2 = new Chromosome(agentSize,dna2);
+
+      }
+    }
+
+    else {
+      child1 = parent1;
+      child2 = parent2;
+    }
+
+    child1.mutate(pMutation); 
+    child2.mutate(pMutation);
+    var children:Array[Chromosome] = Array[Chromosome](child1,child2);
+    return children
+  }
+
+  def performIteration():Population = {
+    var newpop:Population = new Population(numAgents,agentSize);
+    var counter = 0;
+    while (counter < numAgents) {
+      val parent1:Chromosome = sampleParent();
+      val parent2:Chromosome = sampleParent();
+      val children:Array[Chromosome] = produceChild(parent1,parent2);
+      val child1:Chromosome = children(0);
+      val child2:Chromosome = children(1);
+      newpop.agents(counter) = child1;
+      newpop.agents(counter + 1) = child2;
+      counter = counter + 2;
+    }
+  println("Old Population");
+  println(population.agents.mkString(", "));
+  println("Average Fitness: "+population.avgFit());
+  println("Maximum Fitness: "+population.maxFit());
+  println("New Population");
+  println(newpop.agents.mkString(", "));
+  println("Average Fitness: "+newpop.avgFit());
+  println("Maximum Fitness: "+newpop.maxFit());
+  return newpop;
+  }
+
+  def runSimulation():Unit = {
+    for (i <- 1 to numRounds) {
+      performIteration();  
+    }  
+  }  
+
+}
+
