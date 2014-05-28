@@ -7,7 +7,7 @@ from the home directory of this project, type:
 
 *(you may need to sudo)*.
 
-This will bring up the familiar Scala shell in the sbt environment, which it is managing dependencies. It's set up this way so that we can use the [breeze](https://github.com/scalanlp/breeze) package to sample from probability distributions. 
+This will bring up the familiar Scala shell in the sbt environment, which is managing dependencies. It's set up this way so that we can use the [breeze](https://github.com/scalanlp/breeze) package to sample from probability distributions. 
 
 Note that the files in *src/main/scala* are compiled when the *console* command is executed.
 
