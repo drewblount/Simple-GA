@@ -20,7 +20,7 @@ Once you're in the shell, you can interact with a few classes:
 The simplest thing you'll want to do is run a quick simulation.  Beware, the output is kind of messy.  
 To run a simulation, you will first instantiate an object of class GAsim, for instance with the following parameters: 
 
-    val x = new GAsim(100,8,100,0.01,0.5);
+    val x = new GAsim(100,8,100,0.01,0.5)
 
 Then you'll want to call the **runSimulation** method.  
 
