@@ -9,16 +9,18 @@ from the home directory of this project, type:
 
 This will bring up the familiar Scala shell in the sbt environment, which it is managing dependencies. It's set up this way so that we can use the [breeze](https://github.com/scalanlp/breeze) package to sample from probability distributions. 
 
+Note that the files in *src/main/scala* are compiled when the *console* command is executed.
+
 Once you're in the shell, you can interact with a few classes: 
 
 
-* Chromosome(size:Int, bitstring: Array\[Boolean\](size))
-* Population(numAgents:Int,agentSize:Int)
-* GAsim(numAgents:Int, agentSize:int, numRounds:Int, pMutation:Double, pCrossover:Double)
+* **Chromosome(size:Int, bitstring: Array\[Boolean\])**
+* **Population(numAgents:Int,agentSize:Int)**
+* **GAsim(numAgents:Int, agentSize:int, numRounds:Int, pMutation:Double, pCrossover:Double)**
 
 
 The simplest thing you'll want to do is run a quick simulation.  Beware, the output is kind of messy.  
-To run a simulation, you will first instantiate an object of class GAsim, for instance with the following parameters: 
+To run a simulation, you will first instantiate an object of class **GAsim**, for instance with the following parameters: 
 
     val x = new GAsim(100,8,100,0.01,0.5)
 
