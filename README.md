@@ -13,15 +13,15 @@ This will bring up the familiar Scala shell in the sbt environment, where it is 
 
 Once you're in the shell, you can interact with a few classes: 
 
-Chromosome(size:Int, bitstring: Array\\\[Boolean\](size)), 
-Population(numAgents:Int,agentSize:Int), and 
+Chromosome(size:Int, bitstring: Array\\[Boolean\](size)), \n
+Population(numAgents:Int,agentSize:Int), and \n
 GAsim(numAgents:Int, agentSize:int, numRounds:Int, pMutation:Double, pCrossover:Double)
 
 The simplest thing you'll want to do is run a quick simulation.  Beware, the output is kind of messy.  
 To run a simulation, you will first instantiate an object of class GAsim, for instance with the following parameters: 
 
-val x = new GAsim(100,8,100,0.01,0.5);
-x.runSimulation()
+    val x = new GAsim(100,8,100,0.01,0.5);
+    x.runSimulation()
 
 Here, we run a simulation with 100 agents, whose bitstrings are of length 8. We perform 100 iterations where the probability of mutation is 0.01 at each bit, and the probability of crossover is 0.5.  
 
