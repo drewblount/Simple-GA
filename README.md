@@ -1,4 +1,4 @@
-##I'm implementing the "Simple Genetic Algorithm" described in Chapter 1 of Melanie Mitchell's book "Genetic Algorithms".  I'm assuming you have sbt installed on your computer. 
+####I'm implementing the "Simple Genetic Algorithm" described in Chapter 1 of Melanie Mitchell's book "Genetic Algorithms".  I'm assuming you have sbt installed on your computer. 
 I'm really new to sbt, so I don't know how to do much. But I can direct you to a Scala shell and describe how to use this code. 
 
 from the home directory of this project, type: 
@@ -12,9 +12,9 @@ This will bring up the familiar Scala shell in the sbt environment, where it is 
 Once you're in the shell, you can interact with a few classes: 
 
 
-*Chromosome(size:Int, bitstring: Array\[Boolean\](size))
-*Population(numAgents:Int,agentSize:Int)
-*GAsim(numAgents:Int, agentSize:int, numRounds:Int, pMutation:Double, pCrossover:Double)
+* Chromosome(size:Int, bitstring: Array\[Boolean\](size))
+* Population(numAgents:Int,agentSize:Int)
+* GAsim(numAgents:Int, agentSize:int, numRounds:Int, pMutation:Double, pCrossover:Double)
 
 
 The simplest thing you'll want to do is run a quick simulation.  Beware, the output is kind of messy.  
